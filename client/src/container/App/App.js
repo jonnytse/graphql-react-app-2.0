@@ -4,18 +4,6 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { gql } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
 
-class App extends Component {
-  render(){
-    return (
-      <ApolloProvider client={client}>
-        <div>
-          <h1>React-GraphQL App</h1>
-        </div>
-      </ApolloProvider>
-    );
-  }
-}
-
 const client = new ApolloClient({
   uri: 'https://fakerql.nplan.io/graphql',
   cache: new InMemoryCache()
@@ -35,5 +23,17 @@ client
     `
   })
   .then(result => console.log(result));
+
+class App extends Component {
+  render(){
+    return (
+      <ApolloProvider client={client}>
+        <div>
+          <h1>React-GraphQL App</h1>
+        </div>
+      </ApolloProvider>
+    );
+  }
+}
 
 export default App;
