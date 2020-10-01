@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { gql } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>GraphQL React App</h1>
-    </div>
-  );
+class App extends Component {
+  render(){
+    return (
+      <ApolloProvider client={client}>
+        <div>
+          <h1>React-GraphQL App</h1>
+        </div>
+      </ApolloProvider>
+    );
+  }
 }
 
 const client = new ApolloClient({
