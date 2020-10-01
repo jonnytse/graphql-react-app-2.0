@@ -3,6 +3,7 @@ import './App.css';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { gql } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
+import Users from '../../components/Users';
 
 const client = new ApolloClient({
   uri: 'https://fakerql.nplan.io/graphql',
@@ -30,6 +31,7 @@ class App extends Component {
       <ApolloProvider client={client}>
         <div>
           <h1>React-GraphQL App</h1>
+          <Users />
         </div>
       </ApolloProvider>
     );
