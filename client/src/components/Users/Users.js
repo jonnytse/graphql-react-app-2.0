@@ -1,13 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useQuery, gql } from '@apollo/client';
 
-class allUsers extends Component {
-    render() {
-        return (
-            <div>
-                <h2>Users component</h2>
-            </div>
-        )
+const getUsersQuery = gql`
+    {
+        allUsers {
+            firstName
+            lastName
+            email
+            id
+        }
     }
+`
+
+const Users = () => {
+    const { loading, error, data } = useQuery(getUsersQuery);
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;    
+    return data.allUsers.map(user => {
+        return(
+            <ul key={user.email}>
+                <li>Name: {user.firstName} {user.lastName}</li>
+                <li>ID: {user.id}</li>
+                <li>Email: {user.email}</li>
+                <li></li>
+            </ul>
+        );
+    })    
 }
 
-export default allUsers;
+export default Users;

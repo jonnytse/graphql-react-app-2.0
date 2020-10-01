@@ -10,8 +10,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-client
-  .query({
+client.query({
     query: gql`
       {
         allUsers{
@@ -39,3 +38,6 @@ class App extends Component {
 }
 
 export default App;
+
+
+
